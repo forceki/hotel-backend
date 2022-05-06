@@ -1,0 +1,215 @@
+{
+	"tables": [
+		{
+			"name": "jenis_kamar",
+			"primary_key": "id",
+			"foreign_keys": [],
+			"rows": [
+				{
+					"name": "name",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				},
+				{
+					"name": "harga_kamar",
+					"type": "int(11)",
+					"attributes": "default null"
+				}
+			],
+			"values": [
+				[
+					"reguler",
+					160000
+				]
+			]
+		},
+		{
+			"name": "kamar",
+			"primary_key": "id",
+			"foreign_keys": [
+				{
+					"key": "jenis_kamar",
+					"table": "jenis_kamar",
+					"row": "id"
+				}
+			],
+			"rows": [
+				{
+					"name": "name",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				},
+				{
+					"name": "jenis_kamar",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamp",
+					"attributes": "default current_timestamp"
+				},
+				{
+					"name": "max_kapasitas",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "status",
+					"type": "tinyint(4)",
+					"attributes": "default 0"
+				}
+			],
+			"values": [
+				[
+					"x30-04",
+					1,
+					"2022-03-10 05:23:35",
+					3,
+					0
+				]
+			]
+		},
+		{
+			"name": "inventory_kamar",
+			"primary_key": "id",
+			"foreign_keys": [
+				{
+					"key": "kamar_id",
+					"table": "kamar",
+					"row": "id"
+				}
+			],
+			"rows": [
+				{
+					"name": "kamar_id",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "nama",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				}
+			],
+			"values": [
+				[
+					1,
+					"kedap suara"
+				],
+				[
+					1,
+					"gayung"
+				],
+				[
+					1,
+					"kasur"
+				],
+				[
+					1,
+					"toilet"
+				]
+			]
+		},
+		{
+			"name": "pemesanan_kamar",
+			"primary_key": "id",
+			"foreign_keys": [
+				{
+					"key": "kamar_id",
+					"table": "kamar",
+					"row": "id"
+				},
+				{
+					"key": "created_by",
+					"table": "users",
+					"row": "id"
+				}
+			],
+			"rows": [
+				{
+					"name": "kamar_id",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamp",
+					"attributes": "default current_timestamp"
+				},
+				{
+					"name": "created_by",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "nama_user",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				},
+				{
+					"name": "no_telp",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "email",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				}
+			],
+			"values": []
+		},
+		{
+			"name": "roles",
+			"primary_key": "id",
+			"foreign_keys": [],
+			"rows": [
+				{
+					"name": "name",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				}
+			],
+			"values": [
+				[
+					"admin"
+				]
+			]
+		},
+		{
+			"name": "users",
+			"primary_key": "id",
+			"foreign_keys": [
+				{
+					"key": "role",
+					"table": "roles",
+					"row": "id"
+				}
+			],
+			"rows": [
+				{
+					"name": "full_name",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				},
+				{
+					"name": "email",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				},
+				{
+					"name": "role",
+					"type": "int(11)",
+					"attributes": "default null"
+				},
+				{
+					"name": "password",
+					"type": "varchar(100)",
+					"attributes": "default null"
+				}
+			],
+			"values": []
+		}
+	]
+}
